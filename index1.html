@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skyline – Weather App</title>
+  <meta name="description" content="Live weather, 5-day forecast and weather-aware visuals built with HTML, CSS & JavaScript.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-weather="default" data-time="day">
+  <div class="fx" id="fx" aria-hidden="true"></div>
+
+  <header class="header">
+    <a class="logo" href="#top" aria-label="Skyline home"><span class="logo-mark">☁</span> Skyline</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#weather">Today</a>
+      <a href="#forecast-section">Forecast</a>
+      <a href="#recent-section">Recent</a>
+    </nav>
+    <div class="header-actions">
+      <button id="unit-toggle" class="icon-btn" type="button" aria-pressed="false" aria-label="Switch to Fahrenheit">°C</button>
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle dark mode">🌙</button>
+    </div>
+  </header>
+
+  <main class="container" id="top">
+    <section class="search" aria-label="Search weather">
+      <form id="search-form" class="search-form" role="search" novalidate>
+        <label for="city-input" class="sr-only">City name</label>
+        <input id="city-input" type="search" placeholder="Search for a city…" autocomplete="off" maxlength="60">
+        <button id="search-btn" class="btn btn-primary" type="submit">Search</button>
+        <button id="location-btn" class="btn" type="button">📍 Use my location</button>
+      </form>
+      <p id="error" class="error" role="alert" hidden></p>
+    </section>
+
+    <div id="loader" class="loader" role="status" aria-live="polite" hidden>
+      <div class="spinner"></div><span>Fetching the latest weather…</span>
+    </div>
+
+    <section id="empty" class="empty card">
+      <div class="empty-icon" aria-hidden="true">🌤️</div>
+      <h1>Where's the weather today?</h1>
+      <p>Search for a city or use your location to see live conditions and the next five days.</p>
+    </section>
+
+    <div id="weather" hidden>
+      <h2 class="section-title">Today's Weather</h2>
+      <p class="datetime" id="datetime"></p>
+
+      <section class="current card" aria-label="Current weather">
+        <div class="current-main">
+          <p class="place"><span id="city"></span><span id="country" class="country"></span></p>
+          <p class="temp" id="temp" aria-live="polite"></p>
+          <p class="condition" id="condition"></p>
+          <p class="feels" id="feels"></p>
+        </div>
+        <img id="icon" class="current-icon" alt="" width="160" height="160">
+      </section>
+
+      <section class="details" aria-label="Weather details" id="details"></section>
+
+      <section id="forecast-section" aria-labelledby="forecast-title">
+        <h2 class="section-title" id="forecast-title">5-Day Forecast</h2>
+        <div class="forecast" id="forecast"></div>
+      </section>
+    </div>
+
+    <section id="recent-section" class="recent" aria-labelledby="recent-title">
+      <div class="recent-head">
+        <h2 class="section-title" id="recent-title">Recent searches</h2>
+        <button id="clear-recent" class="link-btn" type="button" hidden>Clear</button>
+      </div>
+      <ul id="recent-list" class="chips"></ul>
+      <p id="recent-empty" class="muted">Cities you search for will show up here.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p><strong>Skyline Weather</strong> · Built with HTML, CSS &amp; JavaScript</p>
+    <a href="https://github.com/your-username/weather-app" target="_blank" rel="noopener">GitHub repository</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
